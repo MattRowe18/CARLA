@@ -16,6 +16,14 @@ Before you try to run the dynamic_weather.py script, ensure you have the necessa
 - A working installation of the CARLA
 - A working installation of Python 3.X
 
+Install the `CARLA simulator <https://carla.readthedocs.io/en/latest/start_quickstart/#carla-installation>`
+
+Install the Python CARLA package using pip:
+
+.. code-block:: console
+pip install carla
+
+pip3 install carla
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
