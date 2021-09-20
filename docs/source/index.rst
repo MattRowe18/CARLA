@@ -12,7 +12,7 @@ sets up a moving lightsource from the sun that dips below the horizon to create
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
 
-.. image :: dynamic_weather_output.gif
+.. image :: dynamic_weather_render.gif
 
 .. note::
 
