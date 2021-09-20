@@ -21,9 +21,11 @@ Install the `CARLA simulator <https://carla.readthedocs.io/en/latest/start_quick
 Install the Python CARLA package using pip:
 
 .. code-block:: console 
+
    pip install carla
 
 .. code-block:: console 
+   
    pip3 install carla
 
 Check out the :doc:`usage` section for further information, including
