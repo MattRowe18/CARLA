@@ -28,6 +28,26 @@ Install the Python CARLA package using pip:
    
    pip3 install carla
 
+Let's take a look at the sun class from the script
+
+.. code-block:: python
+
+   class Sun(object):
+      def __init__(self, azimuth, altitude):
+         self.azimuth = azimuth
+         self.altitude = altitude
+         self._t = 0.0
+
+      def tick(self, delta_seconds):
+         self._t += 0.008 * delta_seconds
+         self._t %= 2.0 * math.pi
+         self.azimuth += 0.25 * delta_seconds
+         self.azimuth %= 360.0
+         self.altitude = (70 * math.sin(self._t)) - 20
+
+      def __str__(self):
+         return 'Sun(alt: %.2f, azm: %.2f)' % (self.altitude, self.azimuth)
+
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
 
