@@ -1,10 +1,10 @@
-Welcome to Lumache's documentation!
+Welcome to the CARLA Dynamic Weather tutorial!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**CARLA** is an advanced simulator for the generation of data for training autonomous
+driving solutions.
+
+The Dynamic Weather script sets up a world with changeable weather.
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
