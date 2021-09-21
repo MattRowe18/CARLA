@@ -116,4 +116,4 @@ The following indefinite loop then continuously modifies the weather parameters 
 In this case, the CARLA simulator is running in asynchronous mode (the default mode). This means that the CARLA simulator will calculate and render frames as fast as it
 can compute them and will emit a tick to signal that it has advanced in simulation time. The ``wait_for_tick`` function enables python to wait until 
 a signal is received from the CARLA server to continue and update the weather parameters. This is in contrast to the synchronous mode, whereby a client can control the
-progression of time within the simulation using the ``tick()`` function. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`reference for details.
+progression of time within the simulation using the ``tick()`` function. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_reference for details.
