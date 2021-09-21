@@ -70,11 +70,11 @@ There are 3 command line arguments for the dynamic_weather.py script:
    :widths: 20 80
    :header-rows: 0
 
-   * - \\-\\-host
+   * - ``--host``
      - set the CARLA host IP (by default 127.0.0.1 or 'localhost')
-   * - \\-\\-port
+   * - ``--port``
      - set the port to find the SERVER server (by default port 2000)
-   * - \\-\\-speed
+   * - ``--speed``
      - sets the speed of the weather changes by multiplier (default is 1.0)
 
 
