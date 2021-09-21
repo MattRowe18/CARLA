@@ -127,4 +127,20 @@ can compute them and will emit a signal to notify any clients that it has advanc
 a signal has been received from the CARLA server to continue and update the weather parameters. This is in contrast to the synchronous mode, whereby a client can control the
 progression of time within the simulation using the ``tick()`` function.
 
-See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_ reference for details.
+Next let's get more familiar with the API by manipulating the simulator directly from the python command prompt. Open a new terminal and start python:
+
+.. code-block:: console
+
+   >>> import carla 
+   >>> client = carla.Client('localhost',2000)
+   >>> world = Carla.get_world()
+
+Now we've given the Python process a connection to the CARLA server accessible through the world variable. We can access the current state of the weather and modify it. Keep the CARLA viewport visible and keep an eye out for the changes you make:
+
+.. code-block:: console
+
+   >>> weather = world.get_weather()
+   >>> weather.fog_density = 30.0
+   >>> world.set_weather(weather)
+
+Hopefully it's clear now how to manipulate the weather in the CARLA simulator using scripts or directly from the python command line. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_ reference for more details about the functionality of the API.
