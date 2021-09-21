@@ -10,11 +10,14 @@ The Dynamic Weather script sets up a simulated world with changeable weather, th
 sets up a moving lightsource from the sun that dips below the horizon to create a nights
 scene and periodically indroduces inclement weather like rain and fog. 
 
-Before you try to run the dynamic_weather.py script, ensure you have the necessary prerequisites:
+Before you try to run the ``dynamic_weather.py`` script, ensure you have the necessary prerequisites:
 
 - A Windows or Ubuntu 18.04+ computer
-- A working installation of the CARLA
+- A working installation of the CARLA simulator
 - A working installation of Python 3.X
+
+Preparation
+############
 
 Install the `CARLA simulator <https://carla.readthedocs.io/en/latest/start_quickstart/#carla-installation>`_
 
@@ -51,6 +54,9 @@ but once the CARLA simulator is running, it will show a view of the default map 
 
 You can navigate through the map by flying the camera using the WASD keys to move the camera
 and dragging the mouse to rotate the camera. Take some time to fly through the map and explore the town.
+
+Running the script
+############
 
 Now that CARLA is running, you can make use of the Dynamic Weather script. Locate the PythonAPI/examples folder
 inside the CARLA root directory. In here are a number of example scripts to experiment with
@@ -114,6 +120,8 @@ The following indefinite loop then continuously modifies the weather parameters 
             elapsed_time = 0.0
 
 In this case, the CARLA simulator is running in asynchronous mode (the default mode). This means that the CARLA simulator will calculate and render frames as fast as it
-can compute them and will emit a signal to notify a client that it has advanced in simulation time. The ``wait_for_tick`` function enables python to wait until 
-a signal is received from the CARLA server to continue and update the weather parameters. This is in contrast to the synchronous mode, whereby a client can control the
-progression of time within the simulation using the ``tick()`` function. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_ reference for details.
+can compute them and will emit a signal to notify any clients that it has advanced in simulation time. The ``wait_for_tick()`` function notifies the python process that 
+a signal has been received from the CARLA server to continue and update the weather parameters. This is in contrast to the synchronous mode, whereby a client can control the
+progression of time within the simulation using the ``tick()`` function.
+
+See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_ reference for details.
