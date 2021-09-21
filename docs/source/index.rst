@@ -64,17 +64,17 @@ You will now see the weather change from the default scene. Keep watching the sc
 will observe changes of light, from night to day, changes in cloud cover, fog and rain. By default, the weather changes
 much slower than in the image above. However, you can alter the speed using arguments for the python script.
 
-There are 3 arguments to the dynamic_weather.py script:
+There are 3 command line arguments for the dynamic_weather.py script:
 
-.. list-table:: Title
+.. list-table::
    :widths: 20 80
    :header-rows: 0
 
-   * - --host
+   * - \\-\\-host
      - set the CARLA host IP (by default 127.0.0.1 or 'localhost')
-   * - --port
+   * - \\-\\-port
      - set the port to find the SERVER server (by default port 2000)
-   * - --speed
+   * - \\-\\-speed
      - sets the speed of the weather changes by multiplier (default is 1.0)
 
 
