@@ -75,12 +75,13 @@ There are 3 command line arguments for the dynamic_weather.py script:
    * - ``--port``
      - set the port to find the SERVER server (by default port 2000)
    * - ``--speed``
-     - sets the speed of the weather changes by multiplier (default is 1.0)
+     - changes the speed of the weather changes wih multiplying factor (default is 1.0)
 
 
 .. image :: dynamic_weather_render.gif
 
 .. code-block:: python
+   :number-lines: 20
 
    class Sun(object):
       def __init__(self, azimuth, altitude):
