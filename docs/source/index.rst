@@ -67,7 +67,7 @@ much slower than in the image above. However, you can alter the speed using argu
 There are 3 arguments to the dynamic_weather.py script:
 
 .. list-table:: Title
-   :widths: 20, 80
+   :widths: 20 80
    :header-rows: 0
 
    * - --host
