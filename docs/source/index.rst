@@ -62,7 +62,9 @@ CARLA through the Python API. Run the script from the command line:
 
 You will now see the weather change from the default scene. Keep watching the screen for a few minutes, you
 will observe changes of light, from night to day, changes in cloud cover, fog and rain. By default, the weather changes
-much slower than in the image above. However, you can alter the speed using arguments for the python script.
+much slower than in the image below. However, you can alter the speed of the weather changes using arguments for the python script.
+
+.. image :: dynamic_weather_render.gif
 
 There are 3 command line arguments for the dynamic_weather.py script:
 
@@ -73,45 +75,45 @@ There are 3 command line arguments for the dynamic_weather.py script:
    * - ``--host``
      - set the CARLA host IP (by default 127.0.0.1 or 'localhost')
    * - ``--port``
-     - set the port to find the SERVER server (by default port 2000)
+     - set the port to find the CARLA server (by default port 2000)
    * - ``--speed``
      - changes the speed of the weather changes wih multiplying factor (default is 1.0)
 
+Now let's take a look inside the script to understand how to manipulate the simulation. Open the
+dynamic_weather.py file in a code editor.
 
-.. image :: dynamic_weather_render.gif
+The script first declares some utility classes, to help set up and manipulate parameters for the sun, storms and the weather as a whole. Inside these classes, you will find code that sets initial parameters within the ``__init__`` function of each class.
+Within each class is a ``tick()`` function, this function is called when the simulation is advanced and the various weather parameters governing the angular position of the sun, the amount of rain, fog and clouds are modified by a set amount. The ``Weather`` class calls both the
+``Sun`` and ``Storm`` classes. 
+
+The dynamic_weather script sets up a connection to CARLA at line 132, after parsing the command line arguments:
 
 .. code-block:: python
-   :number-lines: 20
 
-   class Sun(object):
-      def __init__(self, azimuth, altitude):
-         self.azimuth = azimuth
-         self.altitude = altitude
-         self._t = 0.0
+   client = carla.Client(args.host, args.port)
+   client.set_timeout(2.0)
+   world = client.get_world()
 
-      def tick(self, delta_seconds):
-         self._t += 0.008 * delta_seconds
-         self._t %= 2.0 * math.pi
-         self.azimuth += 0.25 * delta_seconds
-         self.azimuth %= 360.0
-         self.altitude = (70 * math.sin(self._t)) - 20
+   weather = Weather(world.get_weather())
 
-      def __str__(self):
-         return 'Sun(alt: %.2f, azm: %.2f)' % (self.altitude, self.azimuth)
+The ``world`` object enables the python script to request alterations to the simulation running in the CARLA server instance and the weather
+object enables the python script to request changes to the weather. 
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+The following indefinite loop then continuously modifies the weather parameters as the simulation runs. 
 
+.. code-block:: python
 
+       while True:
+        timestamp = world.wait_for_tick(seconds=30.0).timestamp
+        elapsed_time += timestamp.delta_seconds
+        if elapsed_time > update_freq:
+            weather.tick(speed_factor * elapsed_time)
+            world.set_weather(weather.weather)
+            sys.stdout.write('\r' + str(weather) + 12 * ' ' + str(elapsed_time))
+            sys.stdout.flush()
+            elapsed_time = 0.0
 
-.. note::
-
-   The rendered view changes much slower than this.
-
-Contents
---------
-
-.. toctree::
-
-   usage
-   api
+In this case, the CARLA simulator is running in asynchronous mode (the default mode). This means that the CARLA simulator will calculate and render frames as fast as it
+can compute them and will emit a tick to signal that it has advanced in simulation time. The ``wait_for_tick`` function enables python to wait until 
+a signal is received from the CARLA server to continue and update the weather parameters. This is in contrast to the synchronous mode, whereby a client can control the
+progression of time within the simulation using the ``tick()`` function. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`reference for details.
