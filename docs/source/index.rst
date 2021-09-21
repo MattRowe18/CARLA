@@ -47,7 +47,7 @@ on firewall settings, you may have to create rules to allow connections on port 
 open with title **CarlaUE4**, this is the rendering portal. The window may contain only black for a few seconds, 
 but once the CARLA simulator is running, it will show a view of the default map Town01.
 
-.. image :: default_render.png
+.. image :: default_render.PNG
 
 You can navigate through the map by flying the camera using the WASD keys to move the camera
 and dragging the mouse to rotate the camera. Take some time to fly through the map and explore the town.
