@@ -1,5 +1,8 @@
-Welcome to the CARLA Dynamic Weather tutorial!
+CARLA Dynamic Weather tutorial
 ===================================
+
+Welcome to the CARLA Dynamic Weather tutorial. In this tutorial we will explore the ``dynamic_weather.py``
+script supplied with the Python API examples as part of the CARLA simulator package.
 
 **CARLA** is an advanced simulator for the generation of data for training autonomous
 driving solutions. The simulator provides a plethora of options to mimic real world 
@@ -72,7 +75,7 @@ much slower than in the image below. However, you can alter the speed of the wea
 
 .. image :: dynamic_weather_render.gif
 
-There are 3 command line arguments for the dynamic_weather.py script:
+There are 3 command line arguments for the ``dynamic_weather.py`` script:
 
 .. list-table::
    :widths: 20 80
@@ -92,7 +95,7 @@ The script first declares some utility classes, to help set up and manipulate pa
 Within each class is a ``tick()`` function, this function is called when the simulation is advanced and the various weather parameters governing the angular position of the sun, the amount of rain, fog and clouds are modified by a set amount. The ``Weather`` class calls both the
 ``Sun`` and ``Storm`` classes. 
 
-The dynamic_weather script sets up a connection to CARLA at line 132, after parsing the command line arguments:
+The ``dynamic_weather.py`` script sets up a connection to CARLA at line 132, after parsing the command line arguments:
 
 .. code-block:: python
 
