@@ -61,7 +61,7 @@ and dragging the mouse to rotate the camera. Take some time to fly through the m
 Running the script
 ############
 
-Now that CARLA is running, you can make use of the Dynamic Weather script. Locate the PythonAPI/examples folder
+Now that CARLA is running, you can make use of the ``dynamic_weather.py`` script. Locate the PythonAPI/examples folder
 inside the CARLA root directory. In here are a number of example scripts to experiment with
 CARLA through the Python API. Run the script from the command line:
 
