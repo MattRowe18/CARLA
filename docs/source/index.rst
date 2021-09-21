@@ -61,7 +61,22 @@ CARLA through the Python API. Run the script from the command line:
    python3 dynamic_weather.py
 
 You will now see the weather change from the default scene. Keep watching the screen for a few minutes, you
-will observe changes of light, from night to day, changes in cloud cover, fog and rain. 
+will observe changes of light, from night to day, changes in cloud cover, fog and rain. By default, the weather changes
+much slower than in the image above. However, you can alter the speed using arguments for the python script.
+
+There are 3 arguments to the dynamic_weather.py script:
+
+.. list-table:: Title
+   :widths: 25 25 50
+   :header-rows: 0
+
+   * - --host
+     - set the CARLA host IP (by default 127.0.0.1 or 'localhost')
+   * - --port
+     - set the port to find the SERVER server (by default port 2000)
+   * - --speed
+     - sets the speed of the weather changes by multiplier (default is 1.0)
+
 
 .. image :: dynamic_weather_render.gif
 
