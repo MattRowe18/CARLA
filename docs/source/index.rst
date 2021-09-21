@@ -26,9 +26,44 @@ Install the Python CARLA package using pip:
 
 .. code-block:: console 
    
-   pip3 install carla
+   pip3 install carla #Python 3.X
 
-Let's take a look at the sun class from the script
+Then launch the CARLA server:
+
+In Windows
+.. code-block:: console 
+
+   \PATH\TO\CARLA\ROOT\CarlaUE4.exe
+
+In Ubuntu
+.. code-block:: console 
+   
+   ./PATH/TO/CARLA/ROOT/CarlaUE4.sh
+
+This will launch CARLA in server mode, by default it should be listening to port 2000. In Windows, depending 
+on firewall settings, you may have to create rules to allow connections on port 2000. You will see a new window
+open with title **CarlaUE4**, this is the rendering portal. The window may contain only black for a few seconds, 
+but once the CARLA simulator is running, it will show a view of the default map Town01.
+
+.. image ::
+
+   default_render.png
+
+You can navigate through the map by flying the camera using the WASD keys to move the camera
+and dragging the mouse to rotate the camera. Take some time to fly through the map and explore the town.
+
+Now that CARLA is running, you can make use of the Dynamic Weather script. Locate the PythonAPI/examples folder
+inside the CARLA root directory. In here are a number of example scripts to experiment with
+CARLA through the Python API. Run the script from the command line:
+
+.. code-block:: console
+
+   python3 dynamic_weather.py
+
+You will now see the weather change from the default scene. Keep watching the screen for a few minutes, you
+will observe changes of light, from night to day, changes in cloud cover, fog and rain. 
+
+.. image :: dynamic_weather_render.gif
 
 .. code-block:: python
 
@@ -51,11 +86,11 @@ Let's take a look at the sun class from the script
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
 
-.. image :: dynamic_weather_render.gif
+
 
 .. note::
 
-   This project is under active development.
+   The rendered view changes much slower than this.
 
 Contents
 --------
