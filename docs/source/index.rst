@@ -153,7 +153,7 @@ Now we've given the Python process a connection to the CARLA server accessible t
    >>> world.set_weather(weather)
 
 Use ``list(filter(lambda x: x.find('__'), dir(weather)))`` to list the attributes of the weather object. The lowercase list elements are the parameters that can be edited, try changing some other parameters like in the code snippets above and observe the effects. You will also see some CamelCase attributes. These are 
-weather parameter presets for rapidly setting up common weather scenarios. Pick one and try it out:
+weather parameter presets for rapidly setting up common weather scenarios. Pick some and try them out:
 
 .. code-block:: console
 
