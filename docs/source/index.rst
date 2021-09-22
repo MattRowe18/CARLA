@@ -15,7 +15,7 @@ scene and periodically indroduces inclement weather like rain and fog.
 
 Before you try to run the ``dynamic_weather.py`` script, ensure you have the necessary prerequisites:
 
-- A Windows or Ubuntu 18.04+ computer
+- A Windows or Linux computer with a powerful GPU
 - A working installation of the CARLA simulator
 - A working installation of Python 3.X
 
@@ -88,7 +88,7 @@ There are 3 command line arguments for the ``dynamic_weather.py`` script:
    * - ``--speed``
      - changes the speed of the weather changes wih multiplying factor (default is 1.0)
 
-Now let's take a look inside the script to understand how to manipulate the simulation. Open the
+Now let's take a look inside the script to understand how it manipulates the simulation. Open the
 dynamic_weather.py file in a code editor.
 
 The script first declares some utility classes, to help set up and manipulate parameters for the sun, storms and the weather as a whole. Inside these classes, you will find code that sets initial parameters within the ``__init__`` function of each class.
@@ -105,8 +105,8 @@ The ``dynamic_weather.py`` script sets up a connection to CARLA at line 132, aft
 
    weather = Weather(world.get_weather())
 
-The ``world`` object enables the python script to request alterations to the simulation running in the CARLA server instance and the weather
-object enables the python script to request changes to the weather. 
+The ``world`` object enables the python process to request alterations to the simulation running in the CARLA server instance and the weather
+object collects and modifies the simulation parameters associated with the weather. 
 
 The following indefinite loop then continuously modifies the weather parameters as the simulation runs. 
 
@@ -130,13 +130,13 @@ progression of time within the simulation using the ``tick()`` function.
 Manipulating the simulator directly from the python command line
 ############
 
-Next let's get more familiar with the API by manipulating the simulator directly from the python command prompt. Open a new terminal and start python:
+Next let's explore the API by manipulating the simulator directly from the python command prompt. Open a new terminal and start python:
 
 .. code-block:: console
 
    >>> import carla 
    >>> client = carla.Client('localhost',2000)
-   >>> world = Carla.get_world()
+   >>> world = client.get_world()
 
 Now we've given the Python process a connection to the CARLA server accessible through the world variable. We can access the current state of the weather and modify it. Keep the CARLA viewport visible and keep an eye out for the changes you make:
 
@@ -145,5 +145,12 @@ Now we've given the Python process a connection to the CARLA server accessible t
    >>> weather = world.get_weather()
    >>> weather.fog_density = 30.0
    >>> world.set_weather(weather)
+
+Use ``list(filter(lambda x: x.find('__'), dir(weather)))`` to list the attributes of the weather object. The lowercase list elements are the paramters that can be edited, try changing some other parameters like in the code snippets above and observe the effects. You will also see some CamelCase attributes. These are 
+weather parameter presets for rapidly setting up common weather scenarios. Pick one and try it out:
+
+.. code-block:: console
+
+   >>> world.set_weather(weather.SoftRainSunset)
 
 Hopefully it's clear now how to manipulate the weather in the CARLA simulator using scripts or directly from the python console. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_ reference for more details about the functionality of the API.
