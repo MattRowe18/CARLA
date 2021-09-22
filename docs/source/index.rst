@@ -94,7 +94,7 @@ There are 3 command line arguments for the ``dynamic_weather.py`` script:
 How the script works
 #################
 
-Now let's take a look inside the script to understand how to manipulate the simulation. Open the
+Now let's take a look inside the script to understand how to manipulate the simulation using python commands. Open the
 ``dynamic_weather.py`` file in a code editor.
 
 The script first declares some utility classes, to help set up and manipulate parameters for the sun, storms and the weather as a whole. Inside these classes, you will find code that sets initial parameters within the ``__init__`` function of each class.
