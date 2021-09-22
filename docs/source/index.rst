@@ -88,8 +88,11 @@ There are 3 command line arguments for the ``dynamic_weather.py`` script:
    * - ``--speed``
      - changes the speed of the weather changes wih multiplying factor (default is 1.0)
 
+How the script works
+#################
+
 Now let's take a look inside the script to understand how to manipulate the simulation. Open the
-dynamic_weather.py file in a code editor.
+``dynamic_weather.py`` file in a code editor.
 
 The script first declares some utility classes, to help set up and manipulate parameters for the sun, storms and the weather as a whole. Inside these classes, you will find code that sets initial parameters within the ``__init__`` function of each class.
 Within each class is a ``tick()`` function, this function is called when the simulation is advanced and the various weather parameters governing the angular position of the sun, the amount of rain, fog and clouds are modified by a set amount. The ``Weather`` class calls both the
