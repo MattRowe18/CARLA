@@ -75,6 +75,9 @@ much slower than in the image below. However, you can alter the speed of the wea
 
 .. image :: dynamic_weather_render.gif
 
+Command line arguments
+######################
+
 There are 3 command line arguments for the ``dynamic_weather.py`` script:
 
 .. list-table::
@@ -88,8 +91,11 @@ There are 3 command line arguments for the ``dynamic_weather.py`` script:
    * - ``--speed``
      - changes the speed of the weather changes wih multiplying factor (default is 1.0)
 
-Now let's take a look inside the script to understand how it manipulates the simulation. Open the
-dynamic_weather.py file in a code editor.
+How the script works
+#################
+
+Now let's take a look inside the script to understand how to manipulate the simulation using python commands. Open the
+``dynamic_weather.py`` file in a code editor.
 
 The script first declares some utility classes, to help set up and manipulate parameters for the sun, storms and the weather as a whole. Inside these classes, you will find code that sets initial parameters within the ``__init__`` function of each class.
 Within each class is a ``tick()`` function, this function is called when the simulation is advanced and the various weather parameters governing the angular position of the sun, the amount of rain, fog and clouds are modified by a set amount. The ``Weather`` class calls both the
@@ -152,5 +158,9 @@ weather parameter presets for rapidly setting up common weather scenarios. Pick 
 .. code-block:: console
 
    >>> world.set_weather(weather.SoftRainSunset)
+   >>> world.set_weather(weather.WetCloudyNight)
+   >>> world.set_weather(weather.MidRainSunset)
+
+.. image :: command_line.gif
 
 Hopefully it's clear now how to manipulate the weather in the CARLA simulator using scripts or directly from the python console. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_ reference for more details about the functionality of the API.
