@@ -17,7 +17,7 @@ Before you try to run the ``dynamic_weather.py`` script, ensure you have the nec
 
 - A Windows or Linux computer with a powerful GPU
 - A working installation of the CARLA simulator
-- A working installation of Python 3.X
+- A working installation of Python 2.7 or 3.X on Linux and Python 3.X on Windows
 
 Preparation
 ############
@@ -32,7 +32,7 @@ Install the Python CARLA package using pip:
 
 .. code-block:: console 
    
-   pip3 install carla #Python 3.X
+   pip3 install carla
 
 Then launch the CARLA server with default configuration:
 
@@ -42,7 +42,7 @@ In Windows
 
    \PATH\TO\CARLA\ROOT\CarlaUE4.exe
 
-In Ubuntu
+In Linux
 
 .. code-block:: console 
    
@@ -50,8 +50,8 @@ In Ubuntu
 
 This will launch CARLA in server mode, by default it should be listening to port 2000. In Windows, depending 
 on firewall settings, you may have to create rules to allow connections on port 2000. You will see a new window
-open with title **CarlaUE4**, this is the rendering portal. The window may contain only black for a few seconds, 
-but once the CARLA simulator is running, it will show a view of the default map Town01.
+open with the title **CarlaUE4**, this is the rendering portal. The window may be black for a few seconds, 
+but once the CARLA simulator is running it will show a view of the default map Town01.
 
 .. image :: default_render.PNG
 
@@ -62,7 +62,7 @@ Running the script
 ############
 
 Now that CARLA is running, you can make use of the ``dynamic_weather.py`` script. Locate the PythonAPI/examples folder
-inside the CARLA root directory. In here are a number of example scripts to experiment with
+inside the CARLA root directory. In there are a number of example scripts to experiment with
 CARLA through the Python API. Run the script from the command line:
 
 .. code-block:: console
@@ -70,8 +70,8 @@ CARLA through the Python API. Run the script from the command line:
    python3 dynamic_weather.py
 
 You will now see the weather change from the default scene. Keep watching the screen for a few minutes, you
-will observe changes of light, from night to day, changes in cloud cover, fog and rain. By default, the weather changes
-much slower than in the image below. However, you can alter the speed of the weather changes using arguments for the python script.
+will observe changes of light from night to day, changes in cloud cover, fog and rain. By default the weather changes
+much slower than in the animated image below. However, you can alter the speed of the weather changes using arguments for the python script.
 
 .. image :: dynamic_weather_render.gif
 
@@ -89,7 +89,7 @@ There are 3 command line arguments for the ``dynamic_weather.py`` script:
    * - ``--port``
      - set the port to find the CARLA server (by default port 2000)
    * - ``--speed``
-     - changes the speed of the weather changes wih multiplying factor (default is 1.0)
+     - changes the speed of the weather changes wih multiplying factor (by default 1.0)
 
 How the script works
 #################
@@ -97,11 +97,11 @@ How the script works
 Now let's take a look inside the script to understand how to manipulate the simulation using python commands. Open the
 ``dynamic_weather.py`` file in a code editor.
 
-The script first declares some utility classes, to help set up and manipulate parameters for the sun, storms and the weather as a whole. Inside these classes, you will find code that sets initial parameters within the ``__init__`` function of each class.
+The script first declares some utility classes, to help set up and manipulate parameters for the sun, storms and the weather as a whole. Inside these classes you will find code that sets initial parameters within the ``__init__`` function of each class.
 Within each class is a ``tick()`` function, this function is called when the simulation is advanced and the various weather parameters governing the angular position of the sun, the amount of rain, fog and clouds are modified by a set amount. The ``Weather`` class calls both the
 ``Sun`` and ``Storm`` classes. 
 
-The ``dynamic_weather.py`` script sets up a connection to CARLA at line 132, after parsing the command line arguments:
+The ``dynamic_weather.py`` script sets up a connection between the python process and the CARLA server at line 132, after parsing the command line arguments:
 
 .. code-block:: python
 
@@ -111,7 +111,7 @@ The ``dynamic_weather.py`` script sets up a connection to CARLA at line 132, aft
 
    weather = Weather(world.get_weather())
 
-The ``world`` object enables the python process to request alterations to the simulation running in the CARLA server instance and the weather
+The CARLA server should be running by default on port 2000, if you are having trouble running the script, this would be the first thing to check. The ``world`` object enables the python process to request alterations to the simulation running in the CARLA server instance and the weather
 object collects and modifies the simulation parameters associated with the weather. 
 
 The following indefinite loop then continuously modifies the weather parameters as the simulation runs. 
@@ -130,7 +130,7 @@ The following indefinite loop then continuously modifies the weather parameters 
 
 In this case, the CARLA simulator is running in asynchronous mode (the default mode). This means that the CARLA simulator will calculate and render frames as fast as it
 can compute them and will emit a signal to notify any clients that it has advanced in simulation time. The ``wait_for_tick()`` function notifies the python process that 
-a signal has been received from the CARLA server to continue and update the weather parameters. This is in contrast to the synchronous mode, whereby a client can control the
+a signal has been received from the CARLA server to continue and update the weather parameters. This is in contrast to the `synchronous mode <https://carla.readthedocs.io/en/latest/adv_synchrony_timestep/>`_ , whereby a client can control the
 progression of time within the simulation using the ``tick()`` function.
 
 Manipulating the simulator directly from the python command line
@@ -163,4 +163,4 @@ weather parameter presets for rapidly setting up common weather scenarios. Pick 
 
 .. image :: command_line.gif
 
-Hopefully it's clear now how to manipulate the weather in the CARLA simulator using scripts or directly from the python console. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_ reference for more details about the functionality of the API.
+We hope you enjoyed the tutorial and understand now how to manipulate the weather in the CARLA simulator using scripts or directly from the python console. See the `Python API <https://carla.readthedocs.io/en/latest/python_api/>`_ reference for more details about the functionality of the API.
