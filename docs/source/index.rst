@@ -75,6 +75,9 @@ much slower than in the image below. However, you can alter the speed of the wea
 
 .. image :: dynamic_weather_render.gif
 
+Command line arguments
+######################
+
 There are 3 command line arguments for the ``dynamic_weather.py`` script:
 
 .. list-table::
